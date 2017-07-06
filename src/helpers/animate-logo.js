@@ -1,10 +1,8 @@
-//-----------  Definitions  -----------//
-
-const $logo = document.getElementById('sweep-logo')
-
 //-----------  Animation Functions  -----------//
 
 export default function animateLogo(action, callback){
+  const $logo = document.getElementById('sweep-logo')
+
   const keyframes = {
     opacity   : [0, 1].map(n => n),
     transform : [-50, 0].map(n => `translateY(${n}%)`)

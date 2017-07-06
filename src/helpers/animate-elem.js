@@ -1,15 +1,14 @@
-//-----------  Definitions  -----------//
-
-const $elem = document.getElementById('sweep-elem')
-
 //-----------  Animation Functions  -----------//
 
-export default function animateLogo(action, callback){
+export default function animateElem(action, callback){
+  const $elem = document.getElementById('sweep-elem')
+
   const keyframes = {
     opacity: [0, 1].map(n => n),
   }
 
   const options = {
+    delay     : action == 'hide' ? 500 : 0,
     duration  : 350,
     fill      : 'forwards',
     easing    : 'ease-in',

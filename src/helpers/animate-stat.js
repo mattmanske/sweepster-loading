@@ -1,10 +1,8 @@
-//-----------  Definitions  -----------//
-
-const $stat = document.getElementById('sweep-stat')
-
 //-----------  Animation Functions  -----------//
 
 export default function animateStat(action, callback){
+  const $stat = document.getElementById('sweep-stat')
+
   const keyframes = {
     opacity   : [0, 1].map(n => n),
     transform : [50, 0].map(n => `translateY(${n}%)`)

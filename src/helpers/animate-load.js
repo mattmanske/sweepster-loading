@@ -1,11 +1,9 @@
-//-----------  Definitions  -----------//
-
-const $load1 = document.getElementById('sweep-load1')
-const $load2 = document.getElementById('sweep-load2')
-
 //-----------  Animation Functions  -----------//
 
 export default function animateLoad(action, callback){
+  const $load1 = document.getElementById('sweep-load1')
+  const $load2 = document.getElementById('sweep-load2')
+
   const keyframes1 = {
     opacity   : [0, 1].map(n => n),
     transform : [50, 100].map(n => `scale(${n/100}) transform3d(-50%, -50%, 0)`)

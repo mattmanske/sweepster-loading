@@ -1,8 +1,9 @@
 //-----------  Imports  -----------//
 
-var path       = require('path')
-var webpack    = require('webpack')
-var HtmlPlugin = require('html-webpack-plugin')
+var path           = require('path')
+var webpack        = require('webpack')
+var HtmlPlugin     = require('html-webpack-plugin')
+var UglifyJSPlugin = require('uglifyjs-webpack-plugin')
 
 //-----------  Configuration  -----------//
 
@@ -12,6 +13,7 @@ module.exports = {
     filename : 'loader.js',
     path     : path.resolve(__dirname, 'build')
   },
+  devtool: 'hidden-source-map',
   module: {
     rules: [{
       test    : /\.js$/,
@@ -23,7 +25,12 @@ module.exports = {
     },{
       test    : /\.css$/,
       include : /src/,
-      loaders : ['style-loader', 'css-loader']
+      use     : [{
+        loader  : 'style-loader',
+      },{
+        loader  : 'css-loader',
+        options : { minimize: true }
+      }]
     },{
       test    : /\.html$/,
       include : /src/,
@@ -38,7 +45,8 @@ module.exports = {
     modules: [path.resolve(__dirname, 'src'), 'node_modules'],
   },
   plugins: [
-    new webpack.HotModuleReplacementPlugin(),
+    // new webpack.HotModuleReplacementPlugin(),
+    new UglifyJSPlugin(),
     new HtmlPlugin({
       inject   : true,
       template : 'src/index.html',
@@ -56,9 +64,9 @@ module.exports = {
       },
     })
   ],
-  devServer: {
-    publicPath  : '/',
-    hot         : true,
-    contentBase : path.resolve(__dirname, 'build'),
-  }
+  // devServer: {
+  //   publicPath  : '/',
+  //   hot         : true,
+  //   contentBase : path.resolve(__dirname, 'build'),
+  // }
 };
