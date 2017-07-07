@@ -13,7 +13,7 @@ module.exports = {
     filename : 'loader.js',
     path     : path.resolve(__dirname, 'build')
   },
-  // devtool: 'hidden-source-map',
+  devtool: 'hidden-source-map',
   module: {
     rules: [{
       test    : /\.js$/,
@@ -29,7 +29,7 @@ module.exports = {
         loader  : 'style-loader',
       },{
         loader  : 'css-loader',
-        // options : { minimize: true }
+        options : { minimize: true }
       }]
     },{
       test    : /\.html$/,
@@ -45,7 +45,7 @@ module.exports = {
     modules: [path.resolve(__dirname, 'src'), 'node_modules'],
   },
   plugins: [
-    new webpack.HotModuleReplacementPlugin(),
+    // new webpack.HotModuleReplacementPlugin(),
     // new UglifyJSPlugin(),
     new HtmlPlugin({
       inject   : true,
@@ -64,9 +64,9 @@ module.exports = {
       },
     })
   ],
-  devServer: {
-    publicPath  : '/',
-    hot         : true,
-    contentBase : path.resolve(__dirname, 'build'),
-  }
+  // devServer: {
+  //   publicPath  : '/',
+  //   hot         : true,
+  //   contentBase : path.resolve(__dirname, 'build'),
+  // }
 };

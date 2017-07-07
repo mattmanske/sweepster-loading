@@ -1,11 +1,10 @@
-import './styles.css'
-
-import detectBgLoad from 'helpers/bg-loaded'
-import updateState  from 'helpers/update-state'
-
 //-----------  Load Watcher  -----------//
 
-detectBgLoad(() => {
+var src = '/greenBg.jpg'
+
+const image  = document.createElement('img')
+image.src    = src
+image.onload = () => {
 
   //-----------  Definitions  -----------//
 
@@ -13,11 +12,15 @@ detectBgLoad(() => {
   const $logo = document.getElementById('sweep-logo')
   const $load = document.getElementById('sweep-load')
   const $stat = document.getElementById('sweep-stat')
+  const $line = document.getElementById('sweep-line')
 
   //-----------  Event Dispatchers  -----------//
 
+  function updateState({ detail }){
+    if (detail) $line.innerHTML = detail
+  }
+
   function dispatchStart(){
-    console.log('start');
     $stat.removeEventListener('animationend', dispatchStart, false)
 
     const start = document.createEvent('CustomEvent')
@@ -26,7 +29,6 @@ detectBgLoad(() => {
   }
 
   function dispatchEnded(){
-    console.log('end');
     $elem.removeEventListener('animationend', dispatchEnded, false)
 
     const ended = document.createEvent('CustomEvent')
@@ -55,14 +57,14 @@ detectBgLoad(() => {
 
   //-----------  Animation Event Listeners  -----------//
 
-  $elem.addEventListener('updateState', updateState, false)
-  $elem.addEventListener('loadComplete', loadOut, false)
-
   $elem.addEventListener('animationend', loadIn, false)
   $stat.addEventListener('animationend', dispatchStart, false)
+
+  $elem.addEventListener('loadComplete', loadOut, false)
+  $elem.addEventListener('updateState', updateState, false)
 
   //-----------  In Animations  -----------//
 
   $elem.classList.add('in')
   $load.classList.add('in')
-})
+}

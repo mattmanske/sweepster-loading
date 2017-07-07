@@ -126,23 +126,31 @@ html, body {
 
 #sweep-elem.in {
   animation:
-    0.375s ease-in 0s 1 normal forwards running fadeIn;
+    0.375s ease-in 0s fadeIn;
+  animation-iteration-count : 1;
+  animation-fill-mode       : forwards;
 }
 
 #sweep-logo.in {
   animation:
-    0.875s ease-in 0s 1 normal forwards running fadeIn,
-    0.875s cubic-bezier(.2, 1, .2, 1) 0s 1 normal forwards running swoopDownIn;
+    0.875s ease-in 0s fadeIn,
+    0.875s cubic-bezier(.2, 1, .2, 1) 0s swoopDownIn;
+  animation-iteration-count : 1, 1;
+  animation-fill-mode       : forwards, forwards;
 }
 
 #sweep-stat.in {
   animation:
-    0.875s ease-in 0.25s 1 normal forwards running fadeIn,
-    0.875s cubic-bezier(.2, 1, .2, 1) 0.25s 1 normal forwards running swoopUpIn;
+    0.875s ease-in 0.25s fadeIn,
+    0.875s cubic-bezier(.2, 1, .2, 1) 0.25s swoopUpIn;
+  animation-iteration-count : 1, 1;
+  animation-fill-mode       : forwards, forwards;
 }
 
 #sweep-load.in > div {
-  animation: 0.375s ease-in 0.15s 1 normal forwards running fadeIn;
+  animation                 : 0.375s ease-in 0.15s fadeIn;
+  animation-iteration-count : 1;
+  animation-fill-mode       : forwards;
 }
 
 /*-----------  STATE: Out  -----------*/
@@ -164,21 +172,29 @@ html, body {
 
 #sweep-elem.out {
   animation:
-    0.875s ease-out 0s 1 normal backwards running fadeOut;
+    0.875s ease-out 0s fadeOut;
+  animation-iteration-count : 1;
+  animation-fill-mode       : backwards;
 }
 
 #sweep-logo.out {
   animation:
-    0.375s ease-out 0s 1 normal backwards running fadeOut,
-    0.875s cubic-bezier(.2, 1, .2, 1) 0s 1 normal backwards running swoopDownOut;
+    0.375s ease-out 0s fadeOut,
+    0.875s cubic-bezier(.2, 1, .2, 1) 0s swoopDownOut;
+  animation-iteration-count : 1, 1;
+  animation-fill-mode       : forwards, forwards;
 }
 
 #sweep-stat.out {
   animation:
-    0.375s ease-out 0s 1 normal backwards running fadeOut,
-    0.875s cubic-bezier(.2, 1, .2, 1) 0s 1 normal backwards running swoopOut;
+    0.375s ease-out 0s fadeOut,
+    0.875s cubic-bezier(.2, 1, .2, 1) 0s swoopOut;
+  animation-iteration-count : 1, 1;
+  animation-fill-mode       : forwards, forwards;
 }
 
 #sweep-load.out > div {
-  animation: 0.375s ease-out 0s 1 normal backwards running fadeOut;
+  animation: 0.375s ease-out 0s fadeOut;
+  animation-iteration-count : 1;
+  animation-fill-mode       : backwards;
 }
